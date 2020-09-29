@@ -187,12 +187,17 @@ RCT_EXPORT_METHOD(startChat:(NSDictionary *)options) {
 	[RCTPresentedViewController() dismissViewControllerAnimated:YES completion:nil];
 }
 
-RCT_EXPORT_METHOD(init:(NSString *)zenDeskKey) {
-	[ZDKChat initializeWithAccountKey:zenDeskKey queue:dispatch_get_main_queue()];
+RCT_EXPORT_METHOD(init:(NSString *)zenDeskKey appId:(NSString *)appId) {
+	if (appId) {
+		[ZDKChat initializeWithAccountKey:zenDeskKey appId:appId queue:dispatch_get_main_queue()];
+	} else {
+		[ZDKChat initializeWithAccountKey:zenDeskKey queue:dispatch_get_main_queue()];
+	}
 }
 
 RCT_EXPORT_METHOD(registerPushToken:(NSString *)token) {
 	[ZDKChat registerPushToken:[RCTConvert NSData:token]];
+	// [ZDKChat registerPushTokenString:token]];
 }
 
 @end

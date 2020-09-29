@@ -1,4 +1,4 @@
-import { NativeModules } from "react-native";
+import { NativeEventEmitter, NativeModules } from "react-native";
 
 const RNZendeskChatModule = NativeModules.RNZendeskChatModule;
 
